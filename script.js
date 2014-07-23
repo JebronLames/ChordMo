@@ -57,7 +57,13 @@ $(document).ready(function(){
 		if (a == 4) {a = 0};
 	};
 
-
+  function clearAll(){
+    for (var i = 0; i < 4; i++) {
+      $("#box" + i).css({
+        "background-color": green
+      });
+    };
+  }
 
   /* On play button */
 	$("#play").click(function(){
@@ -67,6 +73,8 @@ $(document).ready(function(){
    	  run();
     } else {
       clearInterval(intervalVar);
+      flag = true;
+      clearAll();
     }
   });
 
