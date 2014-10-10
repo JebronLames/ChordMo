@@ -22,41 +22,35 @@ $(document).ready(function(){
 	var flag = true;
 	var a = 0;
 	var b = 1;
-  var timing = 500;
+  var timing = 1600;
   var intervalVar;
   var kickTiming = timing/2;
   var kickOption = 0;
   var kickInterval;
   var clapTiming = timing;
   var clapInterval;
-  var counter = 1;
-  var timeOutID;
 
 
 	function run() {
-    
     kickStep();
-    if (counter%2 == 0) {
-      clapStep();
-    };
-    if (counter%4 == 0){
-      step();
-    };
-	
+    kickInterval = setInterval(function() { kickStep() },kickTiming);
+		/* $("#box" + 0).css({
+			"background-color": lightgreen
+		}); */
 
-    counter ++;
-    if (counter == 17) { counter = 1 };
-    timeOutID = window.setTimeout(run, timing);
-  
+    flag = false;
+    setTimeout(clapStep(), 400);
+    clapInterval = setInterval(function() { clapStep() },clapTiming);
+		intervalVar = setInterval(function(){ step() },timing);
+    flag = false;
 		/*
 		var a = 0;
 		$("#box" + a).css({
 			"background-color": "red"
 		});
 		*/
-    return 0;
-    };
-		
+		return 0;
+	};
 
   /* Helper function for run().  Steps through boxes */
 	function step(){
@@ -99,22 +93,18 @@ $(document).ready(function(){
   /* On play button */
 	$("#play").click(function(){
     if (flag == true) { 
-      flag = false;
-      $("#box" + 0).css({
-      "background-color": lightgreen
-    });
    	  run();
     } else {
+      clearInterval(intervalVar);
+      clearInterval(kickInterval);
+      clearInterval(clapInterval);
       flag = true;
       clearAll();
-      clearInterval(timeOutID);
-      counter = 1;
     }
   });
 
-  $("#box0").click(function(){
-   	$("#box0 span").text("B");
-    
+  $(".square").click(function(){
+   	alert("Click")
   });
 
   /* Perc row functions */

@@ -1,6 +1,12 @@
+.container {
+
+}
+
 body {
 	background-color: #FFF5C3;
-	color: #505050;
+	color: white;
+  text-padding: 150px;
+  text-align: center;
 }
 
 h1 {
@@ -20,10 +26,28 @@ h1 {
 	clear: both;
 }
 
+#box0 {
+  clear: both;
+}
+
 #play {
 	background-color: #129793;
 	width: 60px;
 }
+
+.squarePerc {
+  display: block;
+  height: 150px;
+  width: 150px;
+  background-color: #129793;
+  border-radius: 30px;
+  margin: 20px;
+  font-size: 30px;
+  text-align: center;
+  text-color: white;
+  float: left;
+}
+
 .square {
 	display: block;
   height: 150px;
